@@ -1,5 +1,6 @@
-.App {
+body {
   text-align: center;
+  background-color: #000a64;
 }
 
 .App-logo {
@@ -11,6 +12,13 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.header {
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  width: 100%;
+  text-align: center;
 }
 
 .App-header {

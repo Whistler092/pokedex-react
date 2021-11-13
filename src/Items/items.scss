@@ -1,0 +1,22 @@
+.row {
+  background-color: white;
+  height: 80vh;
+  margin: 1rem;
+  border-radius: 1rem;
+  padding-top: 2px;
+  overflow: auto;
+  
+}
+
+.item {
+  background-color: #e3e4ee;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  font-family: 'Red Hat Mono', monospace;
+  cursor: pointer;
+
+  .selected {
+    background-color: #cccee0;
+  }
+}

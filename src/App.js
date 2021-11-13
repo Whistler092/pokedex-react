@@ -1,34 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-import { Grid } from '@material-ui/core';
-import { Items } from './Items/Items';
+import logo from "./logo.svg";
+import "./App.css";
+import { Grid } from "@material-ui/core";
+import { Items } from "./Items/Items";
+import axios from "axios";
+import { urlPokemon } from "./utils/endpoints";
+import { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { ItemDetail } from "./Items/ItemDetail";
 
 function App() {
+  const [pokemonsList, setPokemonsList] = useState([]);
 
-  const pokemons = [
-    { name: "Bulbasaur",
-     number: "001"},
-     { name: "Ivysaur",
-     number: "002"},
-     { name: "Venusaur",
-     number: "003"},
-  ]
+  useEffect(() => {
+    try {
+      axios.get(urlPokemon).then((response) => {
+        setPokemonsList(response.data.results);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  /* async function getPokemons() {
+    try {
+      await axios.get(urlPokemon).then((response) => {
+        console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  } */
 
   return (
     <>
-      <Grid container>
-        <Grid item xs={12}>
-          Header
-        </Grid>       
-      </Grid>
-      <Grid container>
-      <Grid item xs={4} >
-          <Items pokemons={pokemons} />
+      <BrowserRouter>
+        <Grid container>
+          <Grid item xs={12}>
+            <div className="header">
+              <h1>Pokédex</h1>
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs={8} >
-          Item Detail
+        <Grid container>
+          <Grid item xs={4}>
+            <Items pokemons={pokemonsList} />
+          </Grid>
+          <Grid item xs={8}>
+            <ItemDetail />
+          </Grid>
         </Grid>
-      </Grid>
+      </BrowserRouter>
     </>
   );
 }

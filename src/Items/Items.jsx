@@ -1,13 +1,15 @@
 import { Item } from "./item";
+import './items.scss';
 
 export const Items = ({ pokemons }) => {
-    console.log('items', pokemons)
-    return (
-        <> 
-            {pokemons.map(poke => {
-                console.log('poke', poke);
-                return (<Item pokemon={poke}  />)
-            })}
-        </>
-    )
-}
+  console.log("items", pokemons);
+  return (
+    <>
+      <div className="row">
+        {pokemons.map((poke) => {
+          return <Item key={poke.name} pokemon={poke} />;
+        })}
+      </div>
+    </>
+  );
+};
