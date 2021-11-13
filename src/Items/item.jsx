@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import "./items.scss";
 
 export const Item = ({ pokemon }) => {
