@@ -12,6 +12,7 @@ import Modal from "@mui/material/Modal";
 import Alert from "@mui/material/Alert";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -107,7 +108,9 @@ export const ItemDetail = (props) => {
         </Modal>
         <div className="title-container">
           <img src={pokemonType} alt="pokemon type" />
-          <h3 className="title">{item ? item?.name : "Select a pokemon first"}</h3>
+          <h3 className="title">
+            {item ? item?.name : "Select a pokemon first"}
+          </h3>
         </div>
         <img
           className="pokemon-image"
@@ -115,25 +118,27 @@ export const ItemDetail = (props) => {
           alt={item?.name}
         />
 
-        {item ? (<div className="footer">
-          {openCatch ? (
-            <Alert
-              iconMapping={{
-                success: <CheckCircleOutlineIcon fontSize="inherit" />,
-              }}
-            >
-              {item?.name} has been caught!
-            </Alert>
-          ) : null}
-          <Button className="footer-option" onClick={catchPokemonHandleOpen}>
-            <img src={catchIcon} alt="pokemon catch" />
-            CATCH
-          </Button>
-          <Button className="footer-option" onClick={detailPokemonHandleOpen}>
-            <img src={detailsIcon} alt="pokemon detail" />
-            DETAILS
-          </Button>
-        </div>) : null}
+        {item ? (
+          <div className="footer">
+            {openCatch ? (
+              <Alert
+                iconMapping={{
+                  success: <CheckCircleOutlineIcon fontSize="inherit" />,
+                }}
+              >
+                {item?.name} has been caught!
+              </Alert>
+            ) : null}
+            <Button className="footer-option" onClick={catchPokemonHandleOpen}>
+              <img src={catchIcon} alt="pokemon catch" />
+              CATCH
+            </Button>
+            <Button className="footer-option" onClick={detailPokemonHandleOpen}>
+              <img src={detailsIcon} alt="pokemon detail" />
+              DETAILS
+            </Button>
+          </div>
+        ) : null}
       </div>
     </Switch>
   );

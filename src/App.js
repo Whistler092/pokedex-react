@@ -6,9 +6,13 @@ import { urlPokemon } from "./utils/endpoints";
 import { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ItemDetail } from "./Items/ItemDetail";
+import { Search } from "./Items/Search";
+import homeIcon from "./assets/Home.png";
+
 
 function App() {
   const [pokemonsList, setPokemonsList] = useState([]);
+  const [searchParameter, setSearchParameter] = useState("");
 
   useEffect(() => {
     try {
@@ -20,29 +24,37 @@ function App() {
     }
   }, []);
 
-  /* async function getPokemons() {
-    try {
-      await axios.get(urlPokemon).then((response) => {
-        console.log(response.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  } */
+  const onSearchHandler = (search) => {
+    setSearchParameter(search);
+  };
 
   return (
     <>
       <BrowserRouter>
         <Grid container>
-          <Grid item xs={12}>
+          <Grid item xs={4}>
+            <div className="header">
+              <Search onSearch={onSearchHandler} />
+            </div>
+          </Grid>
+          <Grid item xs={4}>
             <div className="header">
               <h1>Pokédex</h1>
+            </div>
+          </Grid>
+          <Grid item xs={4}>
+            <div className="header">
+              <img src={homeIcon} alt="home Icon" />
             </div>
           </Grid>
         </Grid>
         <Grid container>
           <Grid item xs={4} md={3}>
-            <Items pokemons={pokemonsList} />
+            <Items
+              pokemons={pokemonsList?.filter((i) =>
+                searchParameter ? i.name.toLowerCase().includes(searchParameter.toLowerCase()) : true
+              )}
+            />
           </Grid>
           <Grid item xs={8} md={9}>
             <ItemDetail />
