@@ -9,6 +9,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import Alert from "@mui/material/Alert";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const style = {
   position: "absolute",
@@ -47,8 +49,12 @@ export const ItemDetail = (props) => {
     }
   }, [location]);
 
-  const catchPokemonHandleOpen = () => setOpenCatch(true);
-  const catchPokemonHandleClose = () => setOpenCatch(false);
+  const catchPokemonHandleOpen = () => {
+    setOpenCatch(true);
+    setTimeout(() => {
+      setOpenCatch(false);
+    }, 3000);
+  };
 
   const detailPokemonHandleOpen = () => setOpenDetail(true);
   const detailPokemonHandleClose = () => setOpenDetail(false);
@@ -88,13 +94,12 @@ export const ItemDetail = (props) => {
                     Attacks: <br />
                     <ul>
                       {item?.abilities.map((abilitiesSlot) => (
-                        <li className="attack">{abilitiesSlot.ability.name} </li>
+                        <li className="attack">
+                          {abilitiesSlot.ability.name}{" "}
+                        </li>
                       ))}
                     </ul>
                   </div>
-
-                  {/* <p>Height: {item?.height}</p>
-                  <p>Weight: {item?.weight}</p> */}
                 </div>
               </div>
             </Typography>
@@ -111,6 +116,15 @@ export const ItemDetail = (props) => {
         />
 
         <div className="footer">
+          {openCatch ? (
+            <Alert
+              iconMapping={{
+                success: <CheckCircleOutlineIcon fontSize="inherit" />,
+              }}
+            >
+              {item?.name} has been caught!
+            </Alert>
+          ) : null}
           <Button className="footer-option" onClick={catchPokemonHandleOpen}>
             <img src={catchIcon} alt="pokemon catch" />
             CATCH
