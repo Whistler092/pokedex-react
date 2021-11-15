@@ -41,10 +41,10 @@ function App() {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid item xs={4}>
+          <Grid item xs={4} md={3}>
             <Items pokemons={pokemonsList} />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={8} md={9}>
             <ItemDetail />
           </Grid>
         </Grid>
