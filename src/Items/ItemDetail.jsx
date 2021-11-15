@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Switch, useLocation } from "react-router";
 import axios from "axios";
 import "./itemDetail.scss";
+import pokemonType from "../assets/PokemonType.png";
 
 export const ItemDetail = (props) => {
   const location = useLocation();
@@ -28,11 +29,18 @@ export const ItemDetail = (props) => {
   return (
     <Switch>
       <div className="item-detail-container">
-        <h3>{item?.name}</h3>
-        <img src={item?.sprites.other.home.front_default} alt={item?.name} />
-        <p>Species: {item?.species.name}</p>
+        <div className="title-container">
+          <img src={pokemonType} alt="pokemon type" />
+          <h3 className="title">{item?.name}</h3>
+        </div>
+        <img className="pokemon-image" src={item?.sprites.other.home.front_default} alt={item?.name} />
+        {/* <p>Species: {item?.species.name}</p>
         <p>Height: {item?.height}</p>
-        <p>Weight: {item?.weight}</p>
+        <p>Weight: {item?.weight}</p> */}
+        <div className="footer">
+          <div className="footerback">back</div>
+          <div className="footernext">next</div>
+      </div>
       </div>
     </Switch>
   );
