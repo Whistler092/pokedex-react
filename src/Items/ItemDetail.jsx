@@ -75,8 +75,26 @@ export const ItemDetail = (props) => {
                 />
                 <div className="pokemon-modal-detail-info">
                   <p>Species: {item?.species.name}</p>
-                  <p>Height: {item?.height}</p>
-                  <p>Weight: {item?.weight}</p>
+                  <div className="types">
+                    Types: <br />
+                    <ul>
+                      {item?.types.map((typeSlot) => (
+                        <li className="type">{typeSlot.type.name} </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="attacks">
+                    Attacks: <br />
+                    <ul>
+                      {item?.abilities.map((abilitiesSlot) => (
+                        <li className="attack">{abilitiesSlot.ability.name} </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* <p>Height: {item?.height}</p>
+                  <p>Weight: {item?.weight}</p> */}
                 </div>
               </div>
             </Typography>

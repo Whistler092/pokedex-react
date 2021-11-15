@@ -15,6 +15,40 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+
+        .types{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 1%;
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            padding: 1%;
+
+            .type{
+                text-align: left;
+                
+            }
+        }
+
+        .attacks{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 1%;
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            padding: 1%;
+
+            .attack{
+                text-align: left;
+                
+            }
+        }
     }
 }
 
