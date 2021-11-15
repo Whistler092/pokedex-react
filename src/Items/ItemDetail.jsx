@@ -107,7 +107,7 @@ export const ItemDetail = (props) => {
         </Modal>
         <div className="title-container">
           <img src={pokemonType} alt="pokemon type" />
-          <h3 className="title">{item?.name}</h3>
+          <h3 className="title">{item ? item?.name : "Select a pokemon first"}</h3>
         </div>
         <img
           className="pokemon-image"
@@ -115,7 +115,7 @@ export const ItemDetail = (props) => {
           alt={item?.name}
         />
 
-        <div className="footer">
+        {item ? (<div className="footer">
           {openCatch ? (
             <Alert
               iconMapping={{
@@ -133,7 +133,7 @@ export const ItemDetail = (props) => {
             <img src={detailsIcon} alt="pokemon detail" />
             DETAILS
           </Button>
-        </div>
+        </div>) : null}
       </div>
     </Switch>
   );
